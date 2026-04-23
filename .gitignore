@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# environment variables — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# data directory (legacy file-based storage)
+data/
+
+# build output
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp
