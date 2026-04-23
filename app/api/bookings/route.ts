@@ -34,9 +34,11 @@ export async function POST(request: NextRequest) {
     const booking = await createBooking({ name: name.trim(), email: email.trim(), date, time, note: note?.trim() || undefined })
 
     if (process.env.MAILJET_API_KEY) {
-      sendBookingEmails(booking).catch(err => {
+      try {
+        await sendBookingEmails(booking)
+      } catch (err) {
         console.error('Email send failed:', err)
-      })
+      }
     }
 
     return NextResponse.json({ success: true, id: booking.id })
