@@ -103,7 +103,7 @@ function downloadICS(name: string, date: string, time: string) {
 
 function StepBadge({ n, label, active, done }: { n: number; label: string; active: boolean; done: boolean }) {
   return (
-    <div className={`flex items-center gap-2 transition-all duration-300 ${active ? 'opacity-100' : done ? 'opacity-60' : 'opacity-25'}`}>
+    <div className={`flex items-center gap-2 transition-all duration-300 ${active ? 'opacity-100' : done ? 'opacity-80' : 'opacity-30'}`}>
       <div className={`w-5 h-5 rounded-full border flex items-center justify-center text-[10px] font-mono transition-all duration-300
         ${active ? 'border-gold text-gold' : done ? 'border-muted bg-muted/20 text-muted' : 'border-muted/30 text-muted/30'}`}>
         {done ? '✓' : n}
@@ -169,7 +169,7 @@ function Calendar({ year, month, selectedDate, bookedDates, onSelect, onPrev, on
           <div
             key={d}
             className={`text-center text-[10px] font-mono uppercase tracking-widest py-1.5
-              ${i === 2 || i === 4 ? 'text-gold/60' : 'text-muted/40'}`}
+              ${i === 2 || i === 4 ? 'text-gold' : 'text-muted/70'}`}
           >
             {d}
           </div>
@@ -218,7 +218,7 @@ function Calendar({ year, month, selectedDate, bookedDates, onSelect, onPrev, on
         })}
       </div>
 
-      <p className="mt-4 text-[11px] font-mono text-muted/50 text-center tracking-wide">
+      <p className="mt-4 text-[11px] font-mono text-muted/80 text-center tracking-wide">
         TUES &amp; THURS ONLY
       </p>
     </div>
@@ -254,7 +254,7 @@ function TimeSlots({ selectedDate, selectedTime, bookedTimes, loading, onSelect,
       <p className="font-cormorant text-2xl font-light text-ivory mb-1 mt-3">
         Choose a time
       </p>
-      <p className="text-xs font-mono text-muted/70 mb-5 tracking-wide">
+      <p className="text-xs font-mono text-muted mb-5 tracking-wide">
         {formatDateDisplay(selectedDate)} · 1-hour sessions
       </p>
 
@@ -360,10 +360,10 @@ function BookingForm({ selectedDate, selectedTime, onBack, onSuccess }: BookingF
       <p className="font-cormorant text-2xl font-light text-ivory mb-1 mt-3">
         Your details
       </p>
-      <p className="text-xs font-mono text-muted/70 mb-1 tracking-wide">
+      <p className="text-xs font-mono text-muted mb-1 tracking-wide">
         {formatDateDisplay(selectedDate)} · {timeLabel}
       </p>
-      <p className="text-xs font-mono text-gold/60 mb-5 tracking-wide">
+      <p className="text-xs font-mono text-gold mb-5 tracking-wide">
         Web Review · Room 2N10
       </p>
 
@@ -518,10 +518,10 @@ function IdlePlaceholder() {
           <path d="M5 2v2M11 2v2M2 7h12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
         </svg>
       </div>
-      <p className="font-cormorant text-xl font-light text-ivory/50 mb-2">
+      <p className="font-cormorant text-xl font-light text-ivory/80 mb-2">
         Select a date
       </p>
-      <p className="text-[11px] font-mono text-muted/40 tracking-wide">
+      <p className="text-[11px] font-mono text-muted/80 tracking-wide">
         Tuesdays and Thursdays only
       </p>
     </div>
@@ -632,7 +632,7 @@ export default function BookingPage() {
             <StepBadge n={3} label="Details" active={phase === 'form'} done={false} />
           </div>
 
-          <p className="anim-fade-up d1 text-[10px] font-mono uppercase tracking-[0.2em] text-muted mb-2">
+          <p className="anim-fade-up d1 text-[10px] font-mono uppercase tracking-[0.2em] text-muted/90 mb-2">
             Tuesdays &amp; Thursdays &nbsp;·&nbsp; 10 AM – 4 PM &nbsp;·&nbsp; 1 hour
           </p>
           <h1 className="anim-fade-up d2 font-cormorant text-5xl md:text-6xl font-light text-ivory leading-tight">
@@ -691,10 +691,10 @@ export default function BookingPage() {
       {/* Footer */}
       <footer className="px-6 md:px-12 pb-8 mt-auto">
         <div className="max-w-4xl mx-auto border-t border-border/50 pt-6 flex items-center justify-between">
-          <p className="text-[10px] font-mono text-muted/40 tracking-widest uppercase">
+          <p className="text-[10px] font-mono text-muted/70 tracking-widest uppercase">
             Appointment Scheduling
           </p>
-          <p className="text-[10px] font-mono text-muted/40 tracking-wide">
+          <p className="text-[10px] font-mono text-muted/70 tracking-wide">
             tloukas2@uwo.ca
           </p>
         </div>
