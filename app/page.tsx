@@ -549,7 +549,7 @@ export default function BookingPage() {
     fetch('/api/booked-dates')
       .then(r => r.json())
       .then(data => setBookedDates(data.bookedDates || []))
-      .catch(() => {})
+      .catch(err => console.error('Failed to load booked dates:', err))
   }, [])
 
   const canGoPrev =
