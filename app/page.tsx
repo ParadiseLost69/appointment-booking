@@ -108,7 +108,7 @@ function StepBadge({ n, label, active, done }: { n: number; label: string; activ
         ${active ? 'border-gold text-gold' : done ? 'border-muted bg-muted/20 text-muted' : 'border-muted/30 text-muted/30'}`}>
         {done ? '✓' : n}
       </div>
-      <span className={`text-sm font-mono uppercase tracking-widest ${active ? 'text-ivory' : 'text-muted'}`}>{label}</span>
+      <span className={`text-sm md:text-base font-mono uppercase tracking-widest ${active ? 'text-ivory' : 'text-muted'}`}>{label}</span>
     </div>
   )
 }
@@ -148,7 +148,7 @@ function Calendar({ year, month, selectedDate, bookedDates, onSelect, onPrev, on
           </svg>
         </button>
 
-        <span className="font-cormorant text-2xl font-light text-ivory tracking-wide">
+        <span className="font-cormorant text-2xl md:text-3xl font-light text-ivory tracking-wide">
           {MONTHS[month]} <span className="text-muted">{year}</span>
         </span>
 
@@ -168,7 +168,7 @@ function Calendar({ year, month, selectedDate, bookedDates, onSelect, onPrev, on
         {DAYS_SHORT.map((d, i) => (
           <div
             key={d}
-            className={`text-center text-xs font-mono uppercase tracking-widest py-1.5
+            className={`text-center text-xs md:text-sm font-mono uppercase tracking-widest py-1.5
               ${i === 2 || i === 4 ? 'text-gold' : 'text-muted/70'}`}
           >
             {d}
@@ -195,7 +195,7 @@ function Calendar({ year, month, selectedDate, bookedDates, onSelect, onPrev, on
               onClick={() => clickable && onSelect(dateStr)}
               disabled={!clickable}
               className={`
-                relative aspect-square flex items-center justify-center text-sm font-mono
+                relative aspect-square flex items-center justify-center text-sm md:text-base font-mono
                 rounded transition-all duration-150 outline-none
                 ${selected
                   ? 'bg-gold text-ink font-medium'
@@ -218,7 +218,7 @@ function Calendar({ year, month, selectedDate, bookedDates, onSelect, onPrev, on
         })}
       </div>
 
-      <p className="mt-4 text-xs font-mono text-muted/80 text-center tracking-wide">
+      <p className="mt-4 text-xs md:text-sm font-mono text-muted/80 text-center tracking-wide">
         TUES &amp; THURS ONLY
       </p>
     </div>
@@ -251,10 +251,10 @@ function TimeSlots({ selectedDate, selectedTime, bookedTimes, loading, onSelect,
         </button>
       </div>
 
-      <p className="font-cormorant text-3xl font-light text-ivory mb-1 mt-3">
+      <p className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light text-ivory mb-1 mt-3">
         Choose a time
       </p>
-      <p className="text-sm font-mono text-muted mb-5 tracking-wide">
+      <p className="text-sm md:text-base font-mono text-muted mb-5 tracking-wide">
         {formatDateDisplay(selectedDate)} · 1-hour sessions
       </p>
 
@@ -281,7 +281,7 @@ function TimeSlots({ selectedDate, selectedTime, bookedTimes, loading, onSelect,
                 onClick={() => !booked && onSelect(time)}
                 disabled={booked}
                 className={`
-                  anim-fade-up d${i} px-2 py-2.5 rounded border text-sm font-mono tracking-wide
+                  anim-fade-up d${i} px-2 py-2.5 md:py-4 rounded border text-sm md:text-base font-mono tracking-wide
                   transition-all duration-150 outline-none
                   ${selected
                     ? 'border-gold bg-gold/10 text-gold'
@@ -338,7 +338,7 @@ function BookingForm({ selectedDate, selectedTime, onBack, onSuccess }: BookingF
   }
 
   const inputClass = `
-    w-full bg-transparent border-0 border-b border-border text-ivory text-base font-sans
+    w-full bg-transparent border-0 border-b border-border text-ivory text-base md:text-lg font-sans
     py-2.5 px-0 placeholder:text-muted/50 focus:outline-none focus:border-gold
     transition-colors duration-200
   `
@@ -357,19 +357,19 @@ function BookingForm({ selectedDate, selectedTime, onBack, onSuccess }: BookingF
         </button>
       </div>
 
-      <p className="font-cormorant text-3xl font-light text-ivory mb-1 mt-3">
+      <p className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light text-ivory mb-1 mt-3">
         Your details
       </p>
-      <p className="text-sm font-mono text-muted mb-1 tracking-wide">
+      <p className="text-sm md:text-base font-mono text-muted mb-1 tracking-wide">
         {formatDateDisplay(selectedDate)} · {timeLabel}
       </p>
-      <p className="text-sm font-mono text-gold mb-5 tracking-wide">
+      <p className="text-sm md:text-base font-mono text-gold mb-5 tracking-wide">
         Web Review · Room 2N10
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 flex-1">
         <div>
-          <label className="block text-sm font-mono uppercase tracking-widest text-muted mb-2">
+          <label className="block text-sm md:text-base font-mono uppercase tracking-widest text-muted mb-2">
             Full Name <span className="text-gold">*</span>
           </label>
           <input
@@ -384,7 +384,7 @@ function BookingForm({ selectedDate, selectedTime, onBack, onSuccess }: BookingF
         </div>
 
         <div>
-          <label className="block text-sm font-mono uppercase tracking-widest text-muted mb-2">
+          <label className="block text-sm md:text-base font-mono uppercase tracking-widest text-muted mb-2">
             Email Address <span className="text-gold">*</span>
           </label>
           <input
@@ -407,7 +407,7 @@ function BookingForm({ selectedDate, selectedTime, onBack, onSuccess }: BookingF
           type="submit"
           disabled={submitting || !name.trim() || !email.trim()}
           className={`
-            mt-auto self-start flex items-center gap-3 px-6 py-2.5 text-sm font-mono
+            mt-auto self-start flex items-center gap-3 px-6 py-2.5 md:px-8 md:py-3 text-sm md:text-base font-mono
             uppercase tracking-[0.15em] rounded transition-all duration-200 outline-none
             ${submitting || !name.trim() || !email.trim()
               ? 'bg-surface-2 text-muted cursor-not-allowed border border-border'
@@ -450,38 +450,38 @@ function SuccessView({ name, email, date, time, onReset }: SuccessViewProps) {
           </svg>
         </div>
 
-        <h2 className="font-cormorant text-4xl font-light text-ivory mb-3">
+        <h2 className="font-cormorant text-4xl md:text-5xl font-light text-ivory mb-3">
           You&rsquo;re all set.
         </h2>
-        <p className="text-muted text-base font-sans mb-8 leading-relaxed">
+        <p className="text-muted text-base md:text-lg font-sans mb-8 leading-relaxed">
           Your appointment has been confirmed. A confirmation email is on its way to{' '}
           <span className="text-ivory/80">{email}</span>.
         </p>
 
         <div className="border border-border rounded-lg p-5 mb-8 text-left space-y-3">
           <div className="flex justify-between items-center">
-            <span className="text-sm font-mono uppercase tracking-widest text-muted">Name</span>
-            <span className="text-base text-ivory font-sans">{name}</span>
+            <span className="text-sm md:text-base font-mono uppercase tracking-widest text-muted">Name</span>
+            <span className="text-base md:text-lg text-ivory font-sans">{name}</span>
           </div>
           <div className="h-px bg-border" />
           <div className="flex justify-between items-center">
-            <span className="text-sm font-mono uppercase tracking-widest text-muted">Date</span>
-            <span className="text-base text-ivory font-sans">{formatDateDisplay(date)}</span>
+            <span className="text-sm md:text-base font-mono uppercase tracking-widest text-muted">Date</span>
+            <span className="text-base md:text-lg text-ivory font-sans">{formatDateDisplay(date)}</span>
           </div>
           <div className="h-px bg-border" />
           <div className="flex justify-between items-center">
-            <span className="text-sm font-mono uppercase tracking-widest text-muted">Time</span>
-            <span className="text-base text-ivory font-mono">{timeLabel}</span>
+            <span className="text-sm md:text-base font-mono uppercase tracking-widest text-muted">Time</span>
+            <span className="text-base md:text-lg text-ivory font-mono">{timeLabel}</span>
           </div>
           <div className="h-px bg-border" />
           <div className="flex justify-between items-center">
-            <span className="text-sm font-mono uppercase tracking-widest text-muted">Room</span>
-            <span className="text-base text-ivory font-mono">2N10</span>
+            <span className="text-sm md:text-base font-mono uppercase tracking-widest text-muted">Room</span>
+            <span className="text-base md:text-lg text-ivory font-mono">2N10</span>
           </div>
           <div className="h-px bg-border" />
           <div className="flex justify-between items-center">
-            <span className="text-sm font-mono uppercase tracking-widest text-muted">Purpose</span>
-            <span className="text-base text-ivory font-mono">Web Review</span>
+            <span className="text-sm md:text-base font-mono uppercase tracking-widest text-muted">Purpose</span>
+            <span className="text-base md:text-lg text-ivory font-mono">Web Review</span>
           </div>
         </div>
 
@@ -518,10 +518,10 @@ function IdlePlaceholder() {
           <path d="M5 2v2M11 2v2M2 7h12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
         </svg>
       </div>
-      <p className="font-cormorant text-2xl font-light text-ivory/80 mb-2">
+      <p className="font-cormorant text-2xl md:text-3xl lg:text-4xl font-light text-ivory/80 mb-2">
         Select a date
       </p>
-      <p className="text-xs font-mono text-muted/80 tracking-wide">
+      <p className="text-xs md:text-sm font-mono text-muted/80 tracking-wide">
         Tuesdays and Thursdays only
       </p>
     </div>
@@ -622,8 +622,8 @@ export default function BookingPage() {
       <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
       {/* Header */}
-      <header className="px-6 md:px-12 pt-10 pb-8">
-        <div className="max-w-4xl mx-auto">
+      <header className="px-6 md:px-12 lg:px-20 pt-8 pb-6">
+        <div className="max-w-7xl mx-auto">
           <div className="anim-fade-up d0 flex items-center gap-3 mb-6">
             <StepBadge n={1} label="Date" active={phase === 'idle'} done={phase !== 'idle'} />
             <div className="w-6 h-px bg-border" />
@@ -632,23 +632,23 @@ export default function BookingPage() {
             <StepBadge n={3} label="Details" active={phase === 'form'} done={false} />
           </div>
 
-          <p className="anim-fade-up d1 text-sm font-mono uppercase tracking-[0.2em] text-muted/90 mb-2">
+          <p className="anim-fade-up d1 text-sm md:text-base font-mono uppercase tracking-[0.2em] text-muted/90 mb-2">
             Tuesdays &amp; Thursdays &nbsp;·&nbsp; 10 AM – 4 PM &nbsp;·&nbsp; 1 hour
           </p>
-          <h1 className="anim-fade-up d2 font-cormorant text-5xl md:text-6xl font-light text-ivory leading-tight">
+          <h1 className="anim-fade-up d2 font-cormorant text-5xl md:text-6xl lg:text-7xl font-light text-ivory leading-tight">
             Book an Appointment
           </h1>
         </div>
       </header>
 
       {/* Main card */}
-      <main className="flex-1 px-6 md:px-12 pb-16">
-        <div className="max-w-4xl mx-auto">
-          <div className="anim-fade-up d3 bg-surface border border-border rounded-xl overflow-hidden">
-            <div className="flex flex-col md:flex-row">
+      <main className="flex-1 flex flex-col px-6 md:px-12 lg:px-20 pb-8">
+        <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
+          <div className="anim-fade-up d3 bg-surface border border-border rounded-xl overflow-hidden flex-1 flex flex-col">
+            <div className="flex flex-col md:flex-row flex-1">
 
               {/* Calendar panel */}
-              <div className="md:w-[320px] flex-shrink-0 p-7 border-b md:border-b-0 md:border-r border-border">
+              <div className="md:w-[360px] lg:w-[460px] flex-shrink-0 p-7 md:p-10 lg:p-12 border-b md:border-b-0 md:border-r border-border">
                 <Calendar
                   year={calYear}
                   month={calMonth}
@@ -662,7 +662,7 @@ export default function BookingPage() {
               </div>
 
               {/* Right panel */}
-              <div className="flex-1 p-7 min-h-[340px]" key={phase + selectedDate}>
+              <div className="flex-1 p-7 md:p-10 lg:p-12 min-h-[340px]" key={phase + selectedDate}>
                 {phase === 'idle' && <IdlePlaceholder />}
                 {phase === 'time' && selectedDate && (
                   <TimeSlots
@@ -689,8 +689,8 @@ export default function BookingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="px-6 md:px-12 pb-8 mt-auto">
-        <div className="max-w-4xl mx-auto border-t border-border/50 pt-6 flex items-center justify-between">
+      <footer className="px-6 md:px-12 lg:px-20 pb-8 mt-auto">
+        <div className="max-w-7xl mx-auto border-t border-border/50 pt-6 flex items-center justify-between">
           <p className="text-xs font-mono text-muted/70 tracking-widest uppercase">
             Appointment Scheduling
           </p>
